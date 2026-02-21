@@ -1,3 +1,15 @@
+import HeroSection from "./components/HeroSection";
+import ExperienceSection from "./components/ExperienceSection";
+import WorkSection from "./components/WorkSection";
+import FooterSection from "./components/FooterSection";
+
 export default function Home() {
-  return <div className="text-black text-2xl text-center">hello world</div>;
+  return (
+    <main className="min-h-screen bg-[var(--background)] overflow-hidden">
+      <HeroSection />
+      <ExperienceSection />
+      <WorkSection />
+      <FooterSection />
+    </main>
+  );
 }
