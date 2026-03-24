@@ -231,7 +231,7 @@ export default function ExperienceSection() {
             {SKILL_ROWS.map((row, rowIndex) => (
               <div
                 key={`skill-row-${rowIndex}`}
-                className="group flex overflow-hidden"
+                className="group flex overflow-hidden py-2"
               >
                 <div
                   className={`flex min-w-max gap-3 ${rowIndex % 2 === 0 ? "animate-skill-marquee" : "animate-skill-marquee-reverse"
@@ -286,11 +286,11 @@ export default function ExperienceSection() {
       </div>
       <style jsx>{`
         .animate-skill-marquee {
-          animation: skill-marquee 30s linear infinite;
+          animation: skill-marquee 55s linear infinite;
         }
 
         .animate-skill-marquee-reverse {
-          animation: skill-marquee-reverse 34s linear infinite;
+          animation: skill-marquee-reverse 62s linear infinite;
         }
 
         @keyframes skill-marquee {
