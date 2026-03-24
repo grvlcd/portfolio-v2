@@ -1,8 +1,23 @@
+"use client";
+
 const EXPERIENCES = [
+  {
+    company: "MagphAI",
+    role: "Software Engineer",
+    dateRange: "February 2026 – Present",
+    tech: ["Next.js", "TypeScript", "Supabase", "HTML", "CSS", "Tailwind", "Shadcn", "N8N"],
+    bullets: [
+      "Developed and maintained the MagphAI platform using Next.js, TypeScript, Supabase, Tailwind, and Shadcn UI.",
+      "Designed reusable UI components and responsive layouts to ensure a smooth experience across desktop and mobile devices.",
+      "Integrated Supabase services for authentication, data management, and real-time workflows.",
+      "Built and connected N8N automations to streamline internal processes and reduce manual operational tasks.",
+      "Collaborated on feature planning, iterative releases, and production support to continuously improve reliability and performance.",
+    ],
+  },
   {
     company: "TristynTech",
     role: "Senior Software Engineer",
-    dateRange: "Apr 2025 – Present",
+    dateRange: "Apr 2025 – December 2025",
     tech: ["React", "Open AI", "Laravel", "Google Cloud", "Firebase", "Git"],
     bullets: [
       "Integrate AI capabilities using OpenAI APIs for natural language processing and automated content generation",
@@ -16,7 +31,7 @@ const EXPERIENCES = [
   {
     company: "OnlySub",
     role: "Full Stack Developer",
-    dateRange: "Apr 2024 – Sep 2024",
+    dateRange: "Apr 2024 – February 2025",
     tech: ["NestJS", "Next.js", "TypeScript", "MongoDB", "Jest", "Git"],
     bullets: [
       "Led development of scalable web applications using NestJS and Next.js",
@@ -76,13 +91,36 @@ const SKILLS = [
   "React Native",
   "HTML",
   "CSS",
+  "Tailwind",
+  "Shadcn",
+  "Mantine UI",
+  "Material UI",
+  "Ant Design",
+  "Bootstrap",
   "Livewire / Alpine.js",
   "Git",
   "Google Cloud",
+  "Vercel",
+  "Render",
+  "Railway",
+  "Cloudflare Pages",
   "Docker",
   "REST API",
   "Firebase",
+  "Supabase",
+  "N8N",
+  "OpenAI API",
+  "ElevenLabs",
+  "Google Cloud Functions",
+  "Firebase Functions",
+  "Firebase Storage",
+  "Firebase Auth",
 ];
+
+const SKILL_ROWS = [
+  SKILLS.slice(0, Math.ceil(SKILLS.length / 2)),
+  SKILLS.slice(Math.ceil(SKILLS.length / 2)),
+] as const;
 
 export default function ExperienceSection() {
   return (
@@ -187,15 +225,30 @@ export default function ExperienceSection() {
         <p className="font-bold text-[var(--electric)] tracking-[0.2em] uppercase text-sm mb-6">
           Skills
         </p>
-        <div className="flex flex-wrap gap-3">
-          {SKILLS.map((skill) => (
-            <span
-              key={skill}
-              className="px-4 py-2 rounded-full font-semibold text-sm border border-[var(--foreground)]/20 text-[var(--foreground)]/90 hover:border-[var(--accent)]/50 hover:text-[var(--accent)] transition-colors"
-            >
-              {skill}
-            </span>
-          ))}
+        <div className="relative rounded-2xl border border-[var(--foreground)]/15 bg-[var(--foreground)]/[0.02] p-4 sm:p-6 overflow-hidden">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,255,194,0.12),transparent_60%)]" />
+          <div className="relative space-y-3 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+            {SKILL_ROWS.map((row, rowIndex) => (
+              <div
+                key={`skill-row-${rowIndex}`}
+                className="group flex overflow-hidden"
+              >
+                <div
+                  className={`flex min-w-max gap-3 ${rowIndex % 2 === 0 ? "animate-skill-marquee" : "animate-skill-marquee-reverse"
+                    } group-hover:[animation-play-state:paused]`}
+                >
+                  {[...row, ...row].map((skill, skillIndex) => (
+                    <span
+                      key={`${skill}-${skillIndex}`}
+                      className="px-4 py-2 rounded-full font-semibold text-sm border border-[var(--foreground)]/20 text-[var(--foreground)]/90 bg-[var(--background)]/60 backdrop-blur-sm shadow-[0_0_0_1px_rgba(255,255,255,0.02)] hover:-translate-y-0.5 hover:scale-[1.02] hover:border-[var(--accent)]/70 hover:text-[var(--accent)] hover:shadow-[0_0_25px_rgba(0,255,194,0.18)] transition-all duration-300"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -231,6 +284,33 @@ export default function ExperienceSection() {
           </ul>
         </div>
       </div>
+      <style jsx>{`
+        .animate-skill-marquee {
+          animation: skill-marquee 30s linear infinite;
+        }
+
+        .animate-skill-marquee-reverse {
+          animation: skill-marquee-reverse 34s linear infinite;
+        }
+
+        @keyframes skill-marquee {
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(-50%);
+          }
+        }
+
+        @keyframes skill-marquee-reverse {
+          from {
+            transform: translateX(-50%);
+          }
+          to {
+            transform: translateX(0);
+          }
+        }
+      `}</style>
     </section>
   );
 }

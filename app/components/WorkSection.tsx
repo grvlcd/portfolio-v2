@@ -7,6 +7,7 @@ const PROJECTS = [
     link: "https://protocols-sandy.vercel.app/",
     color: "var(--accent)",
     imagePath: "/assets/protocols.png",
+    stack: "Nextjs, Typescript, HTML, CSS, Tailwind, Shadcn, Laravel & API",
   },
   {
     title: "Zopop Virtual Hiring",
@@ -14,6 +15,15 @@ const PROJECTS = [
     link: "https://www.zopop.com/",
     color: "var(--electric)",
     imagePath: "/assets/zopop.png",
+    stack: "Nextjs, Typescript, Supabase, HTML, CSS, Tailwind, Shadcn",
+  },
+  {
+    title: "MagphAI",
+    tag: "Web",
+    link: "https://magphai.tech/",
+    color: "var(--electric)",
+    imagePath: "/assets/magphai.png",
+    stack: "Nextjs, Typescript, Supabase, HTML, CSS, Tailwind, Shadcn, N8N",
   },
 ];
 
@@ -27,9 +37,9 @@ export default function WorkSection() {
         Selected work
       </p>
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {PROJECTS.map((item) => (
+        {PROJECTS.map((item, index) => (
           <article
-            key={item.title}
+            key={`${item.title}-${index}`}
             className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-[var(--foreground)]/5 border border-[var(--foreground)]/10 hover:border-[var(--foreground)]/20 transition-colors"
           >
             <a href={item.link} target="_blank" rel="noopener noreferrer" className="block absolute inset-0">
@@ -58,6 +68,9 @@ export default function WorkSection() {
                 <h2 className="font-bold text-xl sm:text-2xl text-[var(--foreground)]">
                   {item.title}
                 </h2>
+                <p className="mt-2 text-xs sm:text-sm text-[var(--foreground)]/85">
+                  {item.stack}
+                </p>
               </div>
             </a>
           </article>
